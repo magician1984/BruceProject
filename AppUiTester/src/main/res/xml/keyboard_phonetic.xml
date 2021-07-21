@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:horizontalGap="1dp"
+    app:keyWidth="48dp"
+    app:keyHeight="48dp"
+    app:verticalGap="1dp"
+    >
+    <Row>
+        <Key
+            app:codes="1"
+            app:keyLabel="ㄅ"
+            app:keyOutputText="ㄅ" />
+        <Key
+            app:codes="2"
+            app:keyLabel="ㄆ"
+            app:keyOutputText="ㄆ" />
+        <Key
+            app:codes="3"
+            app:keyLabel="ㄇ"
+            app:keyOutputText="ㄇ" />
+        <Key
+            app:codes="4"
+            app:keyLabel="ㄈ"
+            app:keyOutputText="ㄈ" />
+        <Key
+            app:codes="5"
+            app:keyLabel="ㄉ"
+            app:keyOutputText="ㄉ" />
+        <Key
+            app:codes="6"
+            app:keyLabel="ㄊ"
+            app:keyOutputText="ㄊ" />
+        <Key
+            app:codes="7"
+            app:keyLabel="ㄋ"
+            app:keyOutputText="ㄋ" />
+        <Key
+            app:codes="8"
+            app:keyLabel="ㄌ"
+            app:keyOutputText="ㄌ" />
+        <Key
+            app:codes="9"
+            app:keyLabel="ㄍ"
+            app:keyOutputText="ㄍ" />
+    </Row>
+
+    <Row>
+        <Key
+            app:codes="10"
+            app:keyLabel="ㄎ"
+            app:keyOutputText="ㄎ" />
+        <Key
+            app:codes="11"
+            app:keyLabel="ㄏ"
+            app:keyOutputText="ㄏ" />
+        <Key
+            app:codes="12"
+            app:keyLabel="ㄐ"
+            app:keyOutputText="ㄐ" />
+        <Key
+            app:codes="13"
+            app:keyLabel="ㄑ"
+            app:keyOutputText="ㄑ" />
+        <Key
+            app:codes="14"
+            app:keyLabel="ㄒ"
+            app:keyOutputText="ㄒ" />
+        <Key
+            app:codes="15"
+            app:keyLabel="ㄔ"
+            app:keyOutputText="ㄔ" />
+        <Key
+            app:codes="16"
+            app:keyLabel="ㄕ"
+            app:keyOutputText="ㄕ" />
+        <Key
+            app:codes="17"
+            app:keyLabel="ㄖ"
+            app:keyOutputText="ㄖ" />
+        <Key
+            app:codes="18"
+            app:keyLabel="ㄗ"
+            app:keyOutputText="ㄗ" />
+    </Row>
+
+    <Row>
+        <Key
+            app:codes="19"
+            app:keyLabel="ㄘ"
+            app:keyOutputText="ㄘ" />
+        <Key
+            app:codes="20"
+            app:keyLabel="ㄙ"
+            app:keyOutputText="ㄙ" />
+        <Key
+            app:codes="21"
+            app:keyLabel="ㄧ"
+            app:keyOutputText="ㄧ" />
+        <Key
+            app:codes="22"
+            app:keyLabel="ㄨ"
+            app:keyOutputText="ㄨ" />
+        <Key
+            app:codes="23"
+            app:keyLabel="ㄩ"
+            app:keyOutputText="ㄩ" />
+        <Key
+            app:codes="24"
+            app:keyLabel="ㄚ"
+            app:keyOutputText="ㄚ" />
+        <Key
+            app:codes="25"
+            app:keyLabel="ㄛ"
+            app:keyOutputText="ㄛ" />
+        <Key
+            app:codes="26"
+            app:keyLabel="ㄜ"
+            app:keyOutputText="ㄜ" />
+        <Key
+            app:codes="27"
+            app:keyLabel="ㄝ"
+            app:keyOutputText="ㄝ" />
+    </Row>
+
+    <Row>
+        <Key
+            app:codes="28"
+            app:keyLabel="ㄞ"
+            app:keyOutputText="ㄞ" />
+        <Key
+            app:codes="29"
+            app:keyLabel="ㄟ"
+            app:keyOutputText="ㄟ" />
+        <Key
+            app:codes="30"
+            app:keyLabel="ㄠ"
+            app:keyOutputText="ㄠ" />
+        <Key
+            app:codes="31"
+            app:keyLabel="ㄡ"
+            app:keyOutputText="ㄡ" />
+        <Key
+            app:codes="32"
+            app:keyLabel="ㄢ"
+            app:keyOutputText="ㄢ" />
+        <Key
+            app:codes="33"
+            app:keyLabel="ㄣ"
+            app:keyOutputText="ㄣ" />
+        <Key
+            app:codes="34"
+            app:keyLabel="ㄤ"
+            app:keyOutputText="ㄤ" />
+        <Key
+            app:codes="35"
+            app:keyLabel="ㄥ"
+            app:keyOutputText="ㄥ" />
+        <Key
+            app:codes="36"
+            app:keyLabel="ㄦ"
+            app:keyOutputText="ㄦ" />
+    </Row>
+
+    <Row>
+        <Key
+            app:codes="-21"
+            app:keyLabel="退回" />
+        <Key
+            app:codes="-22"
+            app:keyLabel="清除" />
+    </Row>
+</Keyboard>

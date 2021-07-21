@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/nav_host"
+	app:startDestination="@id/hostFragment">
+
+	<fragment
+		android:id="@+id/hostFragment"
+		android:name="idv.bruce.camera.fragment.HostFragment"
+		android:label="HostFragment" >
+		<action
+			android:id="@+id/action_hostFragment_to_previewFragment"
+			app:destination="@id/previewFragment" />
+		<action
+			android:id="@+id/action_hostFragment_to_captureFragment"
+			app:destination="@id/captureFragment" />
+	</fragment>
+	<fragment
+		android:id="@+id/previewFragment"
+		android:name="idv.bruce.camera.fragment.PreviewFragment"
+		android:label="PreviewFragment" />
+	<fragment
+		android:id="@+id/captureFragment"
+		android:name="idv.bruce.camera.fragment.CaptureFragment"
+		android:label="CaptureFragment" >
+		<action
+			android:id="@+id/action_captureFragment_to_pictureFragment"
+			app:destination="@id/pictureFragment" />
+	</fragment>
+	<fragment
+		android:id="@+id/pictureFragment"
+		android:name="idv.bruce.camera.fragment.PictureFragment"
+		android:label="PictureFragment" />
+</navigation>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="host_icon_size">@android:dimen/app_icon_size</dimen>
+</resources>

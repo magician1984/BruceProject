@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="#000000"
+	android:columnCount="3"
+	android:padding="4dp"
+	tools:ignore="ContentDescription">
+
+	<TableRow>
+
+		<ImageButton
+			style="@style/BruceTheme.HostIcon"
+			android:layout_weight="1"
+			android:adjustViewBounds="true"
+			android:scaleType="fitXY"
+			android:src="@drawable/ic_preview"
+			android:tag="ACTION:PREVIEW" />
+
+		<ImageButton
+			style="@style/BruceTheme.HostIcon"
+			android:layout_weight="1"
+			android:adjustViewBounds="true"
+			android:scaleType="fitXY"
+			android:src="@drawable/ic_capture"
+			android:tag="ACTION:CAPTURE" />
+
+		<Space android:layout_weight="1" />
+	</TableRow>
+</TableLayout>

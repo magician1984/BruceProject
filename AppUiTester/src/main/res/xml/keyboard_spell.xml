@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:horizontalGap="1dp"
+    app:keyWidth="48dp"
+    app:keyHeight="48dp"
+    app:verticalGap="1dp">
+    <Row>
+        <Key
+            app:codes="10"
+            app:keyLabel="Q"
+            app:keyOutputText="Q" />
+        <Key
+            app:codes="11"
+            app:keyLabel="W"
+            app:keyOutputText="W" />
+        <Key
+            app:codes="12"
+            app:keyLabel="E"
+            app:keyOutputText="E" />
+        <Key
+            app:codes="13"
+            app:keyLabel="R"
+            app:keyOutputText="R" />
+        <Key
+            app:codes="14"
+            app:keyLabel="T"
+            app:keyOutputText="T" />
+        <Key
+            app:codes="15"
+            app:keyLabel="Y"
+            app:keyOutputText="Y" />
+        <Key
+            app:codes="16"
+            app:keyLabel="U"
+            app:keyOutputText="U" />
+        <Key
+            app:codes="17"
+            app:keyLabel="I"
+            app:keyOutputText="I" />
+        <Key
+            app:codes="18"
+            app:keyLabel="O"
+            app:keyOutputText="O" />
+        <Key
+            app:codes="19"
+            app:keyLabel="P"
+            app:keyOutputText="P" />
+    </Row>
+
+    <Row>
+        <Key
+            app:codes="20"
+            app:keyLabel="A"
+            app:keyOutputText="A" />
+        <Key
+            app:codes="21"
+            app:keyLabel="S"
+            app:keyOutputText="S" />
+        <Key
+            app:codes="22"
+            app:keyLabel="D"
+            app:keyOutputText="D" />
+        <Key
+            app:codes="23"
+            app:keyLabel="F"
+            app:keyOutputText="F" />
+        <Key
+            app:codes="24"
+            app:keyLabel="G"
+            app:keyOutputText="G" />
+        <Key
+            app:codes="25"
+            app:keyLabel="H"
+            app:keyOutputText="H" />
+        <Key
+            app:codes="26"
+            app:keyLabel="J"
+            app:keyOutputText="J" />
+        <Key
+            app:codes="27"
+            app:keyLabel="K"
+            app:keyOutputText="K" />
+        <Key
+            app:codes="28"
+            app:keyLabel="L"
+            app:keyOutputText="L" />
+    </Row>
+
+    <Row>
+        <Key
+            app:codes="30"
+            app:keyLabel="Z"
+            app:keyOutputText="Z" />
+        <Key
+            app:codes="31"
+            app:keyLabel="X"
+            app:keyOutputText="X" />
+        <Key
+            app:codes="32"
+            app:keyLabel="C"
+            app:keyOutputText="C" />
+        <Key
+            app:codes="33"
+            app:keyLabel="V"
+            app:keyOutputText="V" />
+        <Key
+            app:codes="34"
+            app:keyLabel="B"
+            app:keyOutputText="B" />
+        <Key
+            app:codes="35"
+            app:keyLabel="N"
+            app:keyOutputText="N" />
+        <Key
+            app:codes="36"
+            app:keyLabel="M"
+            app:keyOutputText="M" />
+        <Key
+            app:codes="-22"
+            app:keyLabel="C" />
+    </Row>
+</Keyboard>

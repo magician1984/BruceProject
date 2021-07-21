@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<declare-styleable name="KeyboardView">
+		<!-- Default KeyboardView style.
+			 {@deprecated Copy this definition into your own application project.} -->
+		<attr name="keyboardViewStyle" format="reference" />
+		<!-- Image for the key. This image needs to be a StateListDrawable, with the following
+			 possible states: normal, pressed, checkable, checkable+pressed, checkable+checked,
+			 checkable+checked+pressed.
+			 {@deprecated Copy this definition into your own application project.} -->
+		<attr name="keyBackground" format="reference" />
+		<!-- Size of the text for character keys.
+			 {@deprecated Copy this definition into your own application project.} -->
+		<attr name="keyTextSize" format="dimension" />
+		<!-- Size of the text for custom keys with some text and no icon.
+			 {@deprecated Copy this definition into your own application project.} -->
+		<attr name="labelTextSize" format="dimension" />
+		<!-- Color to use for the label in a key.
+			 {@deprecated Copy this definition into your own application project.} -->
+		<attr name="keyTextColor" format="color" />
+
+		<attr name="verticalCorrection" format="dimension" />
+		<!-- Layout resource for popup keyboards.
+			 {@deprecated Copy this definition into your own application project.} -->
+		<attr name="popupLayout" format="reference" />
+	</declare-styleable>
+	<!-- {@deprecated Copy this definition into your own application project.} -->
+	<declare-styleable name="Keyboard">
+
+		<attr name="horizontalGap" format="dimension|fraction" />
+		<!-- Default vertical gap between rows of keys.
+			 {@deprecated Copy this definition into your own application project.} -->
+		<attr name="verticalGap" format="dimension|fraction" />
+	</declare-styleable>
+
+	<declare-styleable name="Keyboard_Row">
+		<attr name="gravity">
+			<flag name="start" value="0" />
+			<flag name="center" value="1" />
+			<flag name="end" value="2" />
+		</attr>
+	</declare-styleable>
+
+	<declare-styleable name="Keyboard_Key">
+		<attr name="codes" format="integer" />
+
+		<attr name="keyOutputText" format="string" />
+
+		<attr name="keyLabel" format="string" />
+
+		<attr name="keyWeight" format="integer" />
+	</declare-styleable>
+</resources>
