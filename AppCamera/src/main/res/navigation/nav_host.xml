@@ -14,6 +14,9 @@
 		<action
 			android:id="@+id/action_hostFragment_to_captureFragment"
 			app:destination="@id/captureFragment" />
+		<action
+			android:id="@+id/action_hostFragment_to_dualFragment"
+			app:destination="@id/dualFragment" />
 	</fragment>
 	<fragment
 		android:id="@+id/previewFragment"
@@ -31,4 +34,8 @@
 		android:id="@+id/pictureFragment"
 		android:name="idv.bruce.camera.fragment.PictureFragment"
 		android:label="PictureFragment" />
+	<fragment
+		android:id="@+id/dualFragment"
+		android:name="idv.bruce.camera.fragment.DualFragment"
+		android:label="DualFragment" />
 </navigation>

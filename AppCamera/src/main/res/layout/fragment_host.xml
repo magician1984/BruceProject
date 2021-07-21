@@ -26,6 +26,12 @@
 			android:src="@drawable/ic_capture"
 			android:tag="ACTION:CAPTURE" />
 
-		<Space android:layout_weight="1" />
+		<ImageButton
+			style="@style/BruceTheme.HostIcon"
+			android:layout_weight="1"
+			android:adjustViewBounds="true"
+			android:scaleType="fitXY"
+			android:src="@drawable/ic_dual"
+			android:tag="ACTION:DUAL" />
 	</TableRow>
 </TableLayout>

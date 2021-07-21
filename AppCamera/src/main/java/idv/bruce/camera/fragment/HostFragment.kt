@@ -36,6 +36,7 @@ class HostFragment : Fragment() {
                         when (cmd) {
                             "PREVIEW" -> findNavController().navigate(R.id.action_hostFragment_to_previewFragment)
                             "CAPTURE" -> findNavController().navigate(R.id.action_hostFragment_to_captureFragment)
+                            "DUAL" -> findNavController().navigate(R.id.action_hostFragment_to_dualFragment)
                         }
                     }
                 }

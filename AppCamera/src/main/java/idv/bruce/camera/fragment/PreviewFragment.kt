@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.camera.core.CameraSelector
+import androidx.camera.core.CameraXConfig
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
@@ -59,7 +60,7 @@ open class PreviewFragment : Fragment() {
         setupUseCase()
     }
 
-    open fun setupUseCase() {
+    protected open fun setupUseCase() {
         try {
             // Unbind use cases before rebinding
             cameraProvider.unbindAll()
@@ -71,8 +72,12 @@ open class PreviewFragment : Fragment() {
         }
     }
 
-    protected fun initCamera() {
+    protected open fun initCamera() {
         cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
+
+        val c = ProcessCameraProvider.getInstance(requireContext())
+
+        Log.d("Trace", "${c == cameraProviderFuture}")
 
         cameraProviderFuture.addListener(Runnable {
             // Used to bind the lifecycle of cameras to the lifecycle owner
