@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Keyboard xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:horizontalGap="1dp"
-    app:keyWidth="48dp"
-    app:keyHeight="48dp"
-    app:verticalGap="1dp">
+    app:horizontalGap="1dp">
     <Row>
         <Key
             app:codes="10"

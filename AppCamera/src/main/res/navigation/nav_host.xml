@@ -17,6 +17,9 @@
 		<action
 			android:id="@+id/action_hostFragment_to_dualFragment"
 			app:destination="@id/dualFragment" />
+		<action
+			android:id="@+id/action_hostFragment_to_qrcodeFragment"
+			app:destination="@id/qrcodeFragment" />
 	</fragment>
 	<fragment
 		android:id="@+id/previewFragment"
@@ -38,4 +41,8 @@
 		android:id="@+id/dualFragment"
 		android:name="idv.bruce.camera.fragment.DualFragment"
 		android:label="DualFragment" />
+	<fragment
+		android:id="@+id/qrcodeFragment"
+		android:name="idv.bruce.camera.fragment.QrcodeFragment"
+		android:label="QrcodeFragment" />
 </navigation>

@@ -6,14 +6,20 @@
 	android:layout_height="match_parent"
 	tools:context=".MainActivity">
 
-	<idv.bruce.appuitester.input.KeyboardView
-		android:id="@+id/keyboard"
-		android:background="#000000"
+	<idv.bruce.appuitester.osd.OsdTextView
+		android:id="@+id/osd_text"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="123"
+		android:textSize="72sp"
+		android:visibility="invisible"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<Button
+		android:id="@+id/test"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
 		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintHeight_percent="0.5"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:padding="8dp"/>
-
-
+		app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

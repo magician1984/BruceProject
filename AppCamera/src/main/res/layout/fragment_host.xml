@@ -34,4 +34,20 @@
 			android:src="@drawable/ic_dual"
 			android:tag="ACTION:DUAL" />
 	</TableRow>
+
+
+	<TableRow>
+
+		<ImageButton
+			style="@style/BruceTheme.HostIcon"
+			android:layout_weight="1"
+			android:adjustViewBounds="true"
+			android:scaleType="fitXY"
+			android:src="@drawable/ic_qrcode"
+			android:tag="ACTION:QRCODE" />
+
+		<Space android:layout_weight="1" />
+
+		<Space android:layout_weight="1"/>
+	</TableRow>
 </TableLayout>

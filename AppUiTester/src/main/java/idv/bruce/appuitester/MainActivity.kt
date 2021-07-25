@@ -16,8 +16,9 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        binding.keyboard.apply {
-            keyboard = Keyboard(this@MainActivity, R.xml.keyboard_spell)
+        binding.test.setOnClickListener {
+            binding.osdText.duration = 5000L
+            binding.osdText.show()
         }
     }
 }

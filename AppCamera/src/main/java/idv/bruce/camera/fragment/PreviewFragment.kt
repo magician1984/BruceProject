@@ -6,14 +6,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.camera.core.CameraSelector
-import androidx.camera.core.CameraXConfig
-import androidx.camera.core.Preview
+import android.view.ViewParent
+import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.viewbinding.ViewBinding
 import com.google.common.util.concurrent.ListenableFuture
 import idv.bruce.camera.databinding.FragmentPreviewBinding
+import java.util.concurrent.TimeUnit
 
 open class PreviewFragment : Fragment() {
     companion object {
@@ -51,6 +52,7 @@ open class PreviewFragment : Fragment() {
         initCamera()
     }
 
+
     @SuppressLint("RestrictedApi")
     protected fun flipCamera() {
         cameraSelector = if (cameraSelector.lensFacing!! == CameraSelector.LENS_FACING_BACK) {
@@ -65,8 +67,21 @@ open class PreviewFragment : Fragment() {
             // Unbind use cases before rebinding
             cameraProvider.unbindAll()
 
+            val autoFocusPoint = SurfaceOrientedMeteringPointFactory(1f, 1f)
+                .createPoint(.5f, .5f)
+
+            val autoFocusAction = FocusMeteringAction.Builder(
+                autoFocusPoint,
+                FocusMeteringAction.FLAG_AF
+            ).apply {
+                //start auto-focusing after 2 seconds
+                setAutoCancelDuration(2, TimeUnit.SECONDS)
+            }.build()
+
             // Bind use cases to camera
-            cameraProvider.bindToLifecycle(viewLifecycleOwner, cameraSelector, preview)
+            val camera = cameraProvider.bindToLifecycle(viewLifecycleOwner, cameraSelector, preview)
+
+            camera.cameraControl.startFocusAndMetering(autoFocusAction)
         } catch (exc : Exception) {
             Log.e(TAG, "Use case binding failed", exc)
         }
@@ -86,5 +101,15 @@ open class PreviewFragment : Fragment() {
             setupUseCase()
 
         }, ContextCompat.getMainExecutor(requireContext()))
+    }
+
+    protected fun startPreview() {
+        if (!cameraProvider.isBound(preview))
+            cameraProvider.bindToLifecycle(viewLifecycleOwner, cameraSelector, preview)
+    }
+
+    protected fun stopPreview() {
+        if (cameraProvider.isBound(preview))
+            cameraProvider.unbind(preview)
     }
 }
