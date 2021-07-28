@@ -1,11 +1,10 @@
-package idv.bruce.camera.fragment
+package idv.bruce.code1922.fragment
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Rect
 import android.net.Uri
 import android.os.Bundle
-import android.renderscript.ScriptGroup
 import android.util.Log
 import android.util.Rational
 import android.view.LayoutInflater
@@ -14,13 +13,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.camera.core.*
 import com.google.android.gms.tasks.Task
-import com.google.android.gms.tasks.TaskExecutors
 import com.google.android.gms.tasks.Tasks
 import com.google.mlkit.vision.barcode.Barcode
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.common.InputImage
-import idv.bruce.camera.databinding.FragmentQrcodeBinding
+import idv.bruce.code1922.databinding.FragmentQrcodeBinding
+import idv.bruce.code1922.ui_com.PreviewFragment
 import java.util.concurrent.Executors
 
 class QrcodeFragment : PreviewFragment() {
@@ -82,7 +81,9 @@ class QrcodeFragment : PreviewFragment() {
                 val sms = barcode.sms ?: return
                 if(sms.phoneNumber != "1922"){
                     Toast.makeText(requireContext(), "暫時僅用於1922實名登記QRCODE", Toast.LENGTH_LONG).show()
+                    return
                 }
+
                 intent = Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:${sms.phoneNumber}")).apply {
                     putExtra("sms_body", sms.message)
                 }
