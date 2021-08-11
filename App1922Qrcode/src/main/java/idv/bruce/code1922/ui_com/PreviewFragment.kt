@@ -23,7 +23,7 @@ abstract class PreviewFragment : Fragment() {
     protected var cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
 
 
-
+    protected var isInit : Boolean = false
 
     @SuppressLint("RestrictedApi")
     protected fun flipCamera() {
@@ -60,6 +60,8 @@ abstract class PreviewFragment : Fragment() {
     }
 
     protected open fun initCamera() {
+        isInit = false
+
         cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
 
         val c = ProcessCameraProvider.getInstance(requireContext())
@@ -72,6 +74,7 @@ abstract class PreviewFragment : Fragment() {
 
             setupUseCase()
 
+            isInit = true
         }, ContextCompat.getMainExecutor(requireContext()))
     }
 

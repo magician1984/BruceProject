@@ -1,4 +1,3 @@
 rootProject.name = "BruceProject"
 include ':AppCamera'
 include ':AppUiTester'
-include ':App1922Qrcode'

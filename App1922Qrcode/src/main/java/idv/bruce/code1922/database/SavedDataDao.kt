@@ -16,5 +16,5 @@ interface SavedDataDao {
     fun getAll():List<SavedData>
 
     @Query("select * from t_saved where code like :code")
-    fun find(code:String):SavedData
+    fun find(code:String):List<SavedData>
 }

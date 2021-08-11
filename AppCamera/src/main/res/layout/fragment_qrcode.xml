@@ -9,7 +9,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent" />
 
-	<idv.bruce.code1922.ui_com.MaskView
+	<idv.bruce.camera.ui_com.MaskView
 		android:id="@+id/mask"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent" />

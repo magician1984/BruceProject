@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.camera.core.*
+import androidx.fragment.app.activityViewModels
 import com.google.android.gms.tasks.Task
 import com.google.android.gms.tasks.Tasks
 import com.google.mlkit.vision.barcode.Barcode
@@ -20,6 +21,10 @@ import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.common.InputImage
 import idv.bruce.code1922.databinding.FragmentQrcodeBinding
 import idv.bruce.code1922.ui_com.PreviewFragment
+import idv.bruce.code1922.viewmodel.DataViewModel
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
+import java.lang.Exception
 import java.util.concurrent.Executors
 
 class QrcodeFragment : PreviewFragment() {
@@ -29,6 +34,11 @@ class QrcodeFragment : PreviewFragment() {
 
     private lateinit var binding : FragmentQrcodeBinding
 
+    private lateinit var imageAnalysis : ImageAnalysis
+
+    private var toast : Toast? = null
+
+    private val dataViewModel : DataViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater : LayoutInflater,
@@ -44,6 +54,12 @@ class QrcodeFragment : PreviewFragment() {
             it.setSurfaceProvider(binding.preview.surfaceProvider)
         }
 
+        imageAnalysis = ImageAnalysis.Builder()
+            .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
+            .build().apply {
+                setAnalyzer(Executors.newSingleThreadExecutor(), QrcodeAnalyzer(binding.mask.area))
+            }
+
         initCamera()
     }
 
@@ -51,45 +67,62 @@ class QrcodeFragment : PreviewFragment() {
     override fun setupUseCase() {
         super.setupUseCase()
 
-        val viewPort : ViewPort = ViewPort.Builder(
-            Rational(1, 1),
-            binding.preview.display.rotation
-        )
-            .setScaleType(ViewPort.FILL_CENTER)
-            .build()
+        cameraProvider.bindToLifecycle(viewLifecycleOwner, cameraSelector, imageAnalysis)
+    }
 
-        val imageAnalysis : ImageAnalysis = ImageAnalysis.Builder()
-            .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
-            .build().apply {
-                setAnalyzer(Executors.newSingleThreadExecutor(), QrcodeAnalyzer(binding.mask.area))
-            }
+    override fun onStart() {
+        super.onStart()
+        startScan()
+    }
 
-        val useCaseGroup : UseCaseGroup =
-            UseCaseGroup.Builder().addUseCase(imageAnalysis).setViewPort(viewPort).build()
 
-        cameraProvider.bindToLifecycle(viewLifecycleOwner, cameraSelector, useCaseGroup)
+    private fun startScan() {
+        if (!isInit) return
+        MainScope().launch {
+            if (!cameraProvider.isBound(imageAnalysis))
+                cameraProvider.bindToLifecycle(viewLifecycleOwner, cameraSelector, imageAnalysis)
+        }
+    }
 
-//        cameraProvider.bindToLifecycle(viewLifecycleOwner, cameraSelector, imageAnalysis)
+    private fun stopScan() {
+        if (!isInit) return
+        MainScope().launch {
+            if (cameraProvider.isBound(imageAnalysis))
+                cameraProvider.unbind(imageAnalysis)
+        }
+
     }
 
     private fun onScan(barcode : Barcode) {
-        var intent : Intent? = null
 
         Log.d(TAG, "Barcode type : ${barcode.valueType}")
         when (barcode.valueType) {
             Barcode.TYPE_SMS -> {
                 val sms = barcode.sms ?: return
-                if(sms.phoneNumber != "1922"){
-                    Toast.makeText(requireContext(), "暫時僅用於1922實名登記QRCODE", Toast.LENGTH_LONG).show()
+                if (sms.phoneNumber != "1922") {
+                    onScanError()
+                    startScan()
                     return
                 }
 
-                intent = Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:${sms.phoneNumber}")).apply {
-                    putExtra("sms_body", sms.message)
-                }
+                dataViewModel.onCodeScanned(sms.message!!)
+            }
+            else -> {
+                onScanError()
+                startScan()
             }
         }
-        startActivity(intent ?: return)
+    }
+
+    private fun onScanError() {
+        MainScope().launch {
+            if (toast != null)
+                toast?.cancel()
+
+            toast = Toast.makeText(requireContext(), "暫時僅用於1922實名登記QRCODE", Toast.LENGTH_LONG)
+            toast?.show()
+        }
+
     }
 
     private inner class QrcodeAnalyzer(private val area : Rect? = null) : ImageAnalysis.Analyzer {
@@ -130,6 +163,7 @@ class QrcodeFragment : PreviewFragment() {
 
                 for (barcode in task.result) {
                     if (scanArea!!.contains(barcode.boundingBox ?: continue)) {
+                        stopScan()
                         Log.d(TAG, "Scanned : ${barcode.rawValue}\n${barcode.boundingBox}")
                         onScan(barcode)
                     }

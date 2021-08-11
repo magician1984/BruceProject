@@ -19,5 +19,5 @@ interface SmsDataDao {
     fun getAll():List<SmsData>
 
     @Query("select * from t_sms where code like :code")
-    fun find(code:String):SmsData
+    fun find(code:String):List<SmsData>
 }

@@ -30,6 +30,10 @@ class QrcodeFragment : PreviewFragment() {
 
     private lateinit var binding : FragmentQrcodeBinding
 
+    private var toast : Toast? = null
+
+
+    private var toastFlag : Boolean = false
 
     override fun onCreateView(
         inflater : LayoutInflater,
@@ -73,6 +77,14 @@ class QrcodeFragment : PreviewFragment() {
 //        cameraProvider.bindToLifecycle(viewLifecycleOwner, cameraSelector, imageAnalysis)
     }
 
+    private fun onScanError() {
+        if (toast != null)
+            toast?.cancel()
+
+        toast = Toast.makeText(requireContext(), "暫時僅用於1922實名登記QRCODE", Toast.LENGTH_LONG)
+        toast?.show()
+    }
+
     private fun onScan(barcode : Barcode) {
         var intent : Intent? = null
 
@@ -80,15 +92,20 @@ class QrcodeFragment : PreviewFragment() {
         when (barcode.valueType) {
             Barcode.TYPE_SMS -> {
                 val sms = barcode.sms ?: return
-                if(sms.phoneNumber != "1922"){
-                    Toast.makeText(requireContext(), "暫時僅用於1922實名登記QRCODE", Toast.LENGTH_LONG).show()
+                if (sms.phoneNumber != "1922") {
+                    onScanError()
                 }
                 intent = Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:${sms.phoneNumber}")).apply {
                     putExtra("sms_body", sms.message)
                 }
             }
+            else -> {
+                Log.d(TAG, "else type")
+                onScanError()
+                return
+            }
         }
-        startActivity(intent ?: return)
+        startActivity(intent)
     }
 
     private inner class QrcodeAnalyzer(private val area : Rect? = null) : ImageAnalysis.Analyzer {
