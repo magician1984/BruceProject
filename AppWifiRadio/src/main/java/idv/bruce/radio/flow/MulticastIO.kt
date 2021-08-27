@@ -1,4 +1,4 @@
-package idv.bruce.radio.net
+package idv.bruce.radio.flow
 
 import android.content.Context
 import android.net.wifi.WifiManager
@@ -30,17 +30,9 @@ class MulticastIO(context : Context) {
     private val handlerService : ExecutorService =
         Executors.newSingleThreadExecutor { Thread(it, "radio_handler") }
 
-    val pipelineOutEndpoint : DataProcessPipeline = object : DataProcessPipeline("multicast") {
-        override fun process(data : ByteArray) {
-            queue.offer(data)
-        }
-    }
+    val inputPipeLine : DataProcessorPipeline = DataProcessorPipeline()
 
-    val pipelineInEndPoint : DataProcessPipeline = object : DataProcessPipeline("multicast") {
-        override fun process(data : ByteArray) {
-
-        }
-    }
+    val outputPipeline : DataProcessorPipeline = DataProcessorPipeline()
 
     fun join(address : String, port : Int) : Boolean {
         quit()
