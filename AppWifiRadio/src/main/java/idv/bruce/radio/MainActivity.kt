@@ -3,8 +3,8 @@ package idv.bruce.radio
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import idv.bruce.radio.flow.DataProcessPipeline
-import idv.bruce.radio.flow.MulticastIO
+import idv.bruce.radio.data_flow.DataProcessPipeline
+import idv.bruce.radio.data_flow.MulticastIO
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState : Bundle?) {

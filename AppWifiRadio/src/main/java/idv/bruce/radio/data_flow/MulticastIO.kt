@@ -1,4 +1,4 @@
-package idv.bruce.radio.flow
+package idv.bruce.radio.data_flow
 
 import android.content.Context
 import android.net.wifi.WifiManager
@@ -7,16 +7,17 @@ import java.lang.Exception
 import java.net.DatagramPacket
 import java.net.InetAddress
 import java.net.MulticastSocket
+import java.nio.ByteBuffer
 import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
-class MulticastIO(context : Context) {
+class MulticastIO(context : Context) : Pipeline.Module<ByteBuffer>("Multicast") {
     private var socket : MulticastSocket? = null
 
     private var group : InetAddress? = null
 
-    private val queue : Queue<ByteArray> = LinkedList()
+    private val sendQueue : Queue<ByteArray> = LinkedList()
 
     private val wifiManager : WifiManager =
         context.getSystemService(Context.WIFI_SERVICE) as WifiManager
@@ -30,9 +31,7 @@ class MulticastIO(context : Context) {
     private val handlerService : ExecutorService =
         Executors.newSingleThreadExecutor { Thread(it, "radio_handler") }
 
-    val inputPipeLine : DataProcessorPipeline = DataProcessorPipeline()
-
-    val outputPipeline : DataProcessorPipeline = DataProcessorPipeline()
+    val inputPipeline : Pipeline<ByteBuffer> = Pipeline()
 
     fun join(address : String, port : Int) : Boolean {
         quit()
@@ -66,11 +65,27 @@ class MulticastIO(context : Context) {
     }
 
 
+    override fun process(data : ByteBuffer?) : Boolean {
+        val buffer : ByteBuffer = data ?: return false
+
+        buffer.flip()
+
+        val payload : ByteArray = ByteArray(buffer.remaining())
+
+        buffer.get(payload)
+
+        return sendQueue.offer(payload)
+    }
+
+    override fun release() {
+
+    }
+
     private val sendRunnable : Runnable = Runnable {
         val packet : DatagramPacket = DatagramPacket(ByteArray(1), 1)
 
         while (true) {
-            val data : ByteArray = queue.poll() ?: continue
+            val data : ByteArray = sendQueue.poll() ?: continue
 
             packet.data = data
 
