@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="#000000"
+	android:padding="4dp"
+	tools:ignore="ContentDescription">
+
+	<TableLayout
+		android:id="@+id/tab_layout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:columnCount="3">
+
+		<TableRow>
+
+			<ImageButton
+				style="@style/BruceTheme.HostIcon"
+				android:layout_weight="1"
+				android:adjustViewBounds="true"
+				android:scaleType="fitXY"
+				android:src="@drawable/ic_video"
+				android:tag="ACTION:VIDEO" />
+
+			<ImageButton
+				style="@style/BruceTheme.HostIcon"
+				android:layout_weight="1"
+				android:adjustViewBounds="true"
+				android:scaleType="fitXY"
+				android:src="@drawable/ic_rtsp"
+				android:tag="ACTION:RTSP" />
+
+			<ImageButton
+				style="@style/BruceTheme.HostIcon"
+				android:layout_weight="1"
+				android:adjustViewBounds="true"
+				android:scaleType="fitXY"
+				android:tag="ACTION:DUAL" />
+		</TableRow>
+
+
+		<TableRow>
+
+			<ImageButton
+				style="@style/BruceTheme.HostIcon"
+				android:layout_weight="1"
+				android:adjustViewBounds="true"
+				android:scaleType="fitXY"
+				android:tag="ACTION:QRCODE" />
+
+			<Space android:layout_weight="1" />
+
+			<Space android:layout_weight="1" />
+		</TableRow>
+	</TableLayout>
+
+</ScrollView>

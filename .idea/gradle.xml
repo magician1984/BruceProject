@@ -11,6 +11,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/AppCamera" />
+            <option value="$PROJECT_DIR$/AppPlayer" />
             <option value="$PROJECT_DIR$/AppUiTester" />
             <option value="$PROJECT_DIR$/AppWifiRadio" />
           </set>

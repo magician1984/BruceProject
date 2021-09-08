@@ -2,3 +2,4 @@ rootProject.name = "BruceProject"
 include ':AppCamera'
 include ':AppUiTester'
 include ':AppWifiRadio'
+include ':AppPlayer'

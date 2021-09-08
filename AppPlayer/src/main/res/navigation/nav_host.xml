@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/nav_host"
+	app:startDestination="@id/hostFragment">
+
+	<fragment
+		android:id="@+id/hostFragment"
+		android:name="idv.bruce.player.fragment.HostFragment"
+		android:label="HostFragment" >
+		<action
+			android:id="@+id/action_hostFragment_to_videoFragment"
+			app:destination="@id/videoFragment" />
+		<action
+			android:id="@+id/action_hostFragment_to_RTSTFragment"
+			app:destination="@id/RTSTFragment" />
+	</fragment>
+	<fragment
+		android:id="@+id/videoFragment"
+		android:name="idv.bruce.player.fragment.VideoFragment"
+		android:label="VideoFragment" />
+	<fragment
+		android:id="@+id/RTSTFragment"
+		android:name="idv.bruce.player.fragment.RTSTFragment"
+		android:label="RTSTFragment" />
+</navigation>
