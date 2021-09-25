@@ -36,7 +36,8 @@
 				android:layout_weight="1"
 				android:adjustViewBounds="true"
 				android:scaleType="fitXY"
-				android:tag="ACTION:DUAL" />
+				android:src="@drawable/ic_custom"
+				android:tag="ACTION:CUSTOM" />
 		</TableRow>
 
 

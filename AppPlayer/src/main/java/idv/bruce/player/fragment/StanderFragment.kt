@@ -7,15 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.SimpleExoPlayer
-import idv.bruce.player.databinding.FragmentVideoBinding
+import idv.bruce.player.databinding.FragmentStanderBinding
 
-class VideoFragment : Fragment() {
+class StanderFragment : Fragment() {
     private companion object {
         const val PLAY_URL =
             "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
     }
 
-    private lateinit var binding : FragmentVideoBinding
+    private lateinit var binding : FragmentStanderBinding
 
     private lateinit var player : SimpleExoPlayer
 
@@ -24,7 +24,7 @@ class VideoFragment : Fragment() {
         container : ViewGroup?,
         savedInstanceState : Bundle?
     ) : View {
-        binding = FragmentVideoBinding.inflate(inflater, container, false)
+        binding = FragmentStanderBinding.inflate(inflater, container, false)
         return binding.root
     }
 

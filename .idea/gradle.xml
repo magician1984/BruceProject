@@ -14,6 +14,8 @@
             <option value="$PROJECT_DIR$/AppPlayer" />
             <option value="$PROJECT_DIR$/AppUiTester" />
             <option value="$PROJECT_DIR$/AppWifiRadio" />
+            <option value="$PROJECT_DIR$/ComOsd" />
+            <option value="$PROJECT_DIR$/ModPlayer" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

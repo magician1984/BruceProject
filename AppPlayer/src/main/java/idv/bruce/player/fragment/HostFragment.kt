@@ -35,7 +35,8 @@ class HostFragment : Fragment() {
 
                         when (cmd) {
                             "VIDEO" -> findNavController().navigate(R.id.action_hostFragment_to_videoFragment)
-                            "RTSP"->findNavController().navigate(R.id.action_hostFragment_to_RTSTFragment)
+                            "RTSP" -> findNavController().navigate(R.id.action_hostFragment_to_RTSTFragment)
+                            "CUSTOM" -> findNavController().navigate(R.id.action_hostFragment_to_customViewFragment)
                         }
                     }
                 }

@@ -1,22 +1,24 @@
 package idv.bruce.player.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.SimpleExoPlayer
-import idv.bruce.player.databinding.FragmentRtspBinding
-import idv.bruce.player.databinding.FragmentVideoBinding
+import com.google.android.exoplayer2.analytics.AnalyticsListener
+import com.google.android.exoplayer2.video.VideoSize
+import idv.bruce.player.databinding.FragmentCustomViewBinding
 
-class RTSTFragment : Fragment() {
+class CustomViewFragment : Fragment() {
     private companion object {
         const val PLAY_URL =
-            "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov"
+            "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
     }
 
-    private lateinit var binding : FragmentRtspBinding
+    private lateinit var binding : FragmentCustomViewBinding
 
     private lateinit var player : SimpleExoPlayer
 
@@ -25,11 +27,13 @@ class RTSTFragment : Fragment() {
         container : ViewGroup?,
         savedInstanceState : Bundle?
     ) : View {
-        binding = FragmentRtspBinding.inflate(inflater, container, false)
+        binding = FragmentCustomViewBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view : View, savedInstanceState : Bundle?) {
+        binding.display.setEGLContextClientVersion(2)
+
         initPlayer()
     }
 
@@ -53,7 +57,16 @@ class RTSTFragment : Fragment() {
 
         player.playWhenReady = true
 
-        binding.display.player = player
+        player.setVideoSurfaceView(binding.display)
+
+        player.addAnalyticsListener(object : AnalyticsListener{
+            override fun onVideoSizeChanged(
+                eventTime : AnalyticsListener.EventTime,
+                videoSize : VideoSize
+            ) {
+                Log.d("Trace", "Video size : ${videoSize.width}, ${videoSize.height}")
+            }
+        })
     }
 
     private fun releasePlayer() {
@@ -61,7 +74,7 @@ class RTSTFragment : Fragment() {
     }
 
     private fun startVideo() {
-        val item: MediaItem = MediaItem.fromUri(PLAY_URL)
+        val item : MediaItem = MediaItem.fromUri(PLAY_URL)
 
         player.setMediaItem(item)
 

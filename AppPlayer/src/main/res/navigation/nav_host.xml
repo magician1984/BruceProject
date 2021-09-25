@@ -14,13 +14,20 @@
 		<action
 			android:id="@+id/action_hostFragment_to_RTSTFragment"
 			app:destination="@id/RTSTFragment" />
+		<action
+			android:id="@+id/action_hostFragment_to_customViewFragment"
+			app:destination="@id/customViewFragment" />
 	</fragment>
 	<fragment
 		android:id="@+id/videoFragment"
-		android:name="idv.bruce.player.fragment.VideoFragment"
+		android:name="idv.bruce.player.fragment.StanderFragment"
 		android:label="VideoFragment" />
 	<fragment
 		android:id="@+id/RTSTFragment"
-		android:name="idv.bruce.player.fragment.RTSTFragment"
+		android:name="idv.bruce.player.fragment.RTSPFragment"
 		android:label="RTSTFragment" />
+	<fragment
+		android:id="@+id/customViewFragment"
+		android:name="idv.bruce.player.fragment.CustomViewFragment"
+		android:label="CustomViewFragment" />
 </navigation>

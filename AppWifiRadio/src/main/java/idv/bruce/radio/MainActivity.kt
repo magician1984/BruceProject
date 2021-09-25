@@ -15,12 +15,12 @@ class MainActivity : AppCompatActivity() {
 
         sender.join("228.5.6.7", 8998)
 
-        val processor : DataProcessPipeline.DataProcessor =
-            object : DataProcessPipeline.DataProcessor("T"){
-                override fun prePass(data : ByteArray) {
-                    TODO("Not yet implemented")
-                }
-            }
+//        val processor : DataProcessPipeline.DataProcessor =
+//            object : DataProcessPipeline.DataProcessor("T"){
+//                override fun prePass(data : ByteArray) {
+//                    TODO("Not yet implemented")
+//                }
+//            }
 
 
         Thread().run {
