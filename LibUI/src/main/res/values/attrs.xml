@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<declare-styleable name="DotSeekBar">
+		<!--標題-->
+		<attr name="dsb_title" format="string"/>
+		<attr name="dsb_titleSize" format="dimension"/>
+		<attr name="dsb_titleColor" format="color"/>
+
+		<!--數值-->
+		<attr name="dsb_min" format="integer"/>
+		<attr name="dsb_max" format="integer"/>
+		<attr name="dsb_start" format="integer"/>
+		<attr name="dsb_progress" format="integer"/>
+
+		<!--刻度-->
+		<attr name="dsb_progressColor" format="color"/>
+		<attr name="dsb_tickSize" format="dimension"/>
+		<attr name="dsb_tickColor" format="color"/>
+	</declare-styleable>
+</resources>
